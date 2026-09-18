@@ -88,6 +88,7 @@ ggplot(data = classement_avg_2026_full, aes(x = reorder(TEAM, REB_AVG), y = REB_
     plot.title = element_text(face = "bold", size = 16),
   )
 
+#new dp dispar
 data_disparite <- classement_avg_2026_full %>%
   group_by(TEAM) %>%
   arrange(desc(REB_AVG)) %>%
@@ -99,7 +100,7 @@ data_disparite <- classement_avg_2026_full %>%
   mutate(Gap = R1 - R2) %>% 
   arrange(Gap)
 
-# 2. Création du Lollipop Chart de disparité
+#creating lolipop
 ggplot(data = data_disparite) +
   geom_segment(aes(x = reorder(TEAM, Gap), xend = TEAM, y = R2, yend = R1)) +
   geom_point(aes(x = TEAM, y = R2), color = "#00297c", size = 3.5) +
